@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/71e44cce3c.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,22 +28,36 @@
        <li>
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        </li>
+
        <li>
           <%= link_to "マイページ", user_path(current_user.id) %>
        </li>
+
+       <li>
+         <%= link_to "検索",  search_search_index_path %>
+       </li>
+
+       <li>
+         <%= link_to "投稿",  new_book_path %>
+       </li>
+
      <% else %>
        <li>
          <%= link_to "新規登録", new_user_registration_path %>
        </li>
+
        <li>
          <%= link_to "ログイン", new_user_session_path %>
        </li>
+
        <li>
          <%= link_to "ホーム", root_path %>
        </li>
+
        <li>
          <%= link_to "アバウト", about_path %>
        </li>
+
      <% end %>
 
     </header>
