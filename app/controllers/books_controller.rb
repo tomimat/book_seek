@@ -14,9 +14,9 @@ class BooksController < ApplicationController
   def create
       @book = Book.new(book_params)
       @book.user_id = current_user.id
-      tag_list=params[:book][:name].split(',')
+      tag_list=params[:book][:tag_name].split(',')
     if @book.save!
-      # @book.save_tag(tag_list)
+       @book.save_tag(tag_list)
       redirect_to book_path(@book.id),notice:'投稿完了しました:)'
     else
       @tag_list=Tag.all
@@ -79,13 +79,15 @@ class BooksController < ApplicationController
 
     @tag=Tag.find(params[:tag_id])
 
-    @posts=@tag.posts.page(params[:page]).per(10)
+   # @books=@tag.books.page(params[:page]).per(10)
+    @books=@tag.books
    end
+
 
     private
 
   def book_params
-    params.require(:book).permit(:name)
+    params.require(:book).permit(:name, :coption)
   end
 
 end

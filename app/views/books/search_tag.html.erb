@@ -1,13 +1,10 @@
-<h1>ようこそブックサーチへ！</h1>
-
-
-
 <div class="container">
-<% if @tag %>
 <h5>タグが<%=@tag.name%>の投稿一覧</h5>
-<% end %>
-<!--タグリスト-->
 
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+<%="(#{list.books.count})" %><% end %>
 <% @books.each do |book| %>
 <!--投稿はカードで囲む-->
 <div class="card">
@@ -17,7 +14,7 @@
       <%=link_to book_path(book.id) do %><%= book.name.truncate(25) %>
       <% end %>
     </h6>
-    <p>感想：<%= book.coption %></p>
+
 
 
 
@@ -26,7 +23,7 @@
 <% end %>
 
 <div class="pagination pagination-sm justify-content-center">
-
+       <%#= paginate @posts %></div>
 
 </div>
 

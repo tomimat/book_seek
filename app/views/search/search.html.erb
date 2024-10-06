@@ -1,15 +1,12 @@
-<% @tag_list.each do |list|%>
-<%=list.name %>
-<%="(#{list.books.count})" %><% end %>
+
 
 投稿一覧画面で投稿に紐づくタグを表示
-<% @books.each do |post| %>
-<i class="fas fa-tag"><%= book.tags.map(&:name).join(', ') %></i>
+
 
 <!--タグリスト-->
 <% @tag_list.each do |list|%>
 <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-<%="(#{list.posts.count})" %><% end %>
+<%="(#{list.books.count})" %><% end %>
 
 <%= form_tag search_index_path, method: :get do %>
   <%= text_field_tag :keyword %>

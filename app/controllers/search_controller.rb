@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
    def search
-    @results = Search.search(params[:keyword])
-    render 'search_results'
+    @results = Book.search(params[:keyword])
+    @tag_list = Tag.all
+
+    render 'search'
    end
 end
