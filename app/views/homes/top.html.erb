@@ -1,13 +1,20 @@
+<div class="row">
+   <div class="col-6 mx-auto">
 <h1>BOOK-SEEK</h1>
 <h3>ブックサーチはあなたのおススメの本を紹介したり<br>
     他の人のおススメの本を探せるサイトです<br>
     素敵な本と出会えるかも！
 </h3>
-
-<div class="row">
+     <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+      <div class="row">
           <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">ログイン</a>
         </div>
         <div class="row">
           <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">新規登録</a>
         </div>
       </div>
+  </div>
+</div>

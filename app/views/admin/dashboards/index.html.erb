@@ -1,3 +1,5 @@
+<div class="row">
+   <div class="col-6 mx-auto">
 <h1>全ユーザー一覧</h1>
 <ul>
   <% @users.each do |user| %>
@@ -6,4 +8,21 @@
        <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </li>
   <% end %>
+<h1>全投稿一覧</h1>
+   <% @books.each do |book| %>
+  <div class="card">
+  <div class="card-body">
+    <!--タイトル表示される文字数は２５文字までにしてます-->
+    <h6 class="card-title">
+      <%=link_to book_path(book.id) do %><%= book.name.truncate(25) %>
+      <% end %>
+    </h6>
+    <p>感想：<%= book.coption %></p>
+  </div>
+</div>
+   <%= link_to "削除", admin_book_path(book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+
+  <% end %>
 </ul>
+</div>
+</div>

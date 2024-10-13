@@ -1,5 +1,6 @@
 
-
+<div class="row">
+   <div class="col-6 mx-auto">
 投稿一覧画面で投稿に紐づくタグを表示
 
 
@@ -8,7 +9,31 @@
 <%=link_to list.name,search_tag_path(tag_id: list.id) %>
 <%="(#{list.books.count})" %><% end %>
 
-<%= form_tag search_index_path, method: :get do %>
+<%= form_tag search_search_index_path, method: :get do %>
+ タイトル
   <%= text_field_tag :keyword %>
+  <div class="form-group position-static">
+    <p>星評価:</P>
+    <div id="post_raty"></div>
+    <script>
+          var elem = document.querySelector('#post_raty');
+          var opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'star',
+          };
+          raty(elem,opt);
+      </script>
+  </div>
+
   <%= submit_tag "検索" %>
 <% end %>
+<p>検索結果</p>
+
+<% @results.each do |result|%>
+<%= result.name %>
+<%= result.star %>
+<%= result.coption %>
+<% end %>
+ </div>
+</div>

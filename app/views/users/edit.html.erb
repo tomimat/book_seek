@@ -4,10 +4,12 @@
       <h2>編集</h2>
 
       <%= form_with model: @user do |f| %>
-        <label for="inputName">Name</label>
+        <label for="inputName">名前</label>
          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
 
-        <%= f.submit "Update User" %>
+        <%= f.submit "更新" %>
+
+
       <% end %>
 
     </div>

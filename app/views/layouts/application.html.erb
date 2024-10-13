@@ -26,49 +26,69 @@
 
 
      <% if admin_signed_in? %>
+     <div class= "mr-1">
     <div class="text-right">
       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
     </div>
+    </div>
   <% end %>
     <% if user_signed_in? %>
+    <div class= "mr-1">
        <li>
           <%= link_to "トップ", books_path(current_user.id) %>
        </li>
+    </div>
 
+    <div class= "mr-1">
        <li>
           <%= link_to "マイページ", user_path(current_user.id) %>
        </li>
+</div>
 
+<div class= "mr-1">
        <li>
          <%= link_to "投稿",  new_book_path %>
        </li>
+</div>
 
+<div class= "mr-1">
        <li>
          <%= link_to "検索",  search_search_index_path %>
        </li>
+       </div>
 
+      <div class= "mr-1">
        <li>
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        </li>
+</div>
 
      <% else %>
+
+     <div class= "mr-1">
        <li>
          <%= link_to "新規登録", new_user_registration_path %>
        </li>
+       </div>
+
+
+       <div class= "mr-1">
 
        <li>
          <%= link_to "ログイン", new_user_session_path %>
        </li>
+</div>
 
+<div class= "mr-1">
        <li>
          <%= link_to "ホーム", root_path %>
        </li>
+</div>
 
-       <li>
-         <%= link_to "アバウト", about_path %>
-       </li>
 
      <% end %>
+
+
 
     </header>
     <%= yield %>

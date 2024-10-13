@@ -39,6 +39,8 @@ class BooksController < ApplicationController
     @user = @book.user
     @book_new = Book.new
     @book = Book.find(params[:id])
+    @comments = @book.comments
+    @comment = Comment.new
    # @book_comment=BookComment.new
     @book_tags = @book.tags
   end
@@ -69,6 +71,7 @@ class BooksController < ApplicationController
 
      def search
     @results = Book.search(params[:keyword])
+    @results = @results.search_star(2)
     render 'search_results'
      end
   end
@@ -87,7 +90,7 @@ class BooksController < ApplicationController
     private
 
   def book_params
-    params.require(:book).permit(:name, :coption)
+    params.require(:book).permit(:name, :coption, :star)
   end
 
 end

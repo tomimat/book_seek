@@ -3,8 +3,13 @@ class Book < ApplicationRecord
  # belongs_to :genre
   has_many :book_tags,dependent: :destroy
   has_many :tags,through: :book_tags
+  has_many :comments
   def self.search(keyword)
     where("name LIKE ?", "%#{keyword}%")
+  end
+
+  def self.search_star(keyword)
+    where("star=?", "#{keyword}")
   end
 
   def save_tag(sent_tags)
